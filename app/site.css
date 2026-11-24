@@ -1,0 +1,203 @@
+/* Site-specific additions on top of reference.css: base resets,
+   layout glue, and pre-JS hidden states. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+:root {
+  --font-family--body: var(--font-geist), Geist, sans-serif;
+  --font-family--heading: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 2px solid var(--_color---brand--muted-terracotta); outline-offset: 3px; }
+
+/* ---------- Pre-JS hidden states (html.js is set inline in <head>; .ready is added once GSAP has set from-states) ---------- */
+html.js:not(.ready) [data-reveal],
+html.js:not(.ready) [data-load],
+html.js:not(.ready) .heading-text,
+html.js:not(.ready) .hero-heading,
+html.js:not(.ready) .section-title > .badge,
+html.js:not(.ready) .reasons-center > .badge,
+html.js:not(.ready) .reason-card,
+html.js:not(.ready) .guide-rise,
+html.js:not(.ready) .orbit-wheel,
+html.js:not(.ready) .footer-band .footer-row,
+html.js:not(.ready) .footer-grid .footer-col,
+html.js:not(.ready) .footer-bottom .footer-row { opacity: 0; }
+
+/* ---------- Buttons ---------- */
+.button-primary { width: fit-content; }
+.button-label, .button-arrow-box { pointer-events: none; }
+.card-link .button-label { display: grid; }
+
+/* ---------- Navbar ---------- */
+.nav-shell { position: relative; }
+.nav-brand .nav-logo-icon { width: 34px; height: 34px; border-radius: 0; }
+.nav-dropdown-toggle { display: flex; align-items: center; gap: var(--_spacing---space-small); }
+.nav-chevron { display: block; border-radius: 0; }
+.mega-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; }
+.mega-feature-image { display: block; }
+.nav-mobile-menu { display: none; position: absolute; z-index: 2; }
+@media screen and (min-width: 992px) {
+  .nav-mobile-menu { display: none !important; }
+}
+@media screen and (max-width: 991px) {
+  .mega-menu, .nav-backdrop { display: none !important; }
+}
+.mobile-pages-toggle { width: 100%; text-align: left; }
+.mobile-pages-toggle .nav-chevron { transition: transform .3s; }
+.mobile-pages-toggle.w--open .nav-chevron { transform: rotate(180deg); }
+.mobile-pages-list .mega-column + .mega-column { margin-top: 0; }
+
+/* ---------- Hero ---------- */
+.hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-bg .hero-image { border-radius: 0; }
+.hero-home-area .container.hero-container { align-self: auto; }
+.hero-text { max-width: 30rem; }
+.hero-stat-text { display: flex; flex-direction: column; }
+
+/* ---------- About bento ---------- */
+.bento-video { grid-area: 1 / 1 / 2 / 2; width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-toggle { position: absolute; }
+.bento-card { position: relative; z-index: 1; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; display: block; }
+
+/* ---------- Practice ---------- */
+.practice-slide { display: grid; }
+.practice-slide-image { border-radius: 0; }
+.practice-track { padding-left: calc(max(0px, (100vw - 105rem) / 2) + var(--_spacing---space-5-small)); padding-right: var(--_spacing---space-5-small); }
+.practice-arrow svg { width: 40%; height: 40%; }
+@media screen and (min-width: 992px) {
+  .team-link.is-practice { display: inline-flex; align-items: center; gap: .5rem; }
+}
+.team-link.is-practice svg { width: 1rem; height: 1rem; }
+
+/* Shared slider (practice ≤991, counsel ≤767) */
+.pop-slider { position: relative; }
+.pop-slider-mask { overflow: visible; }
+.counsel-slider .pop-slider-mask { overflow: hidden; border-radius: var(--_border-radius---border-radius--border-1-medium); }
+.pop-slider-list { display: flex; gap: var(--_spacing---space-2-small); transition: transform .7s cubic-bezier(.22, 1, .36, 1); touch-action: pan-y; }
+.pop-slider-slide { flex: 0 0 100%; min-width: 0; }
+.slider-arrows { position: absolute; left: 0; bottom: 0; display: flex; gap: .75rem; }
+.slider-arrows svg { width: 1.25rem; height: 1.25rem; }
+.counsel-slider .counsel-plate { min-width: 0; }
+
+/* ---------- How we work ---------- */
+.step-card.is-stack { will-change: transform; }
+
+/* ---------- Orbit ---------- */
+.orbit-item { will-change: transform; }
+.orbit-photo { border-radius: 0; }
+
+/* ---------- Case results ---------- */
+@media screen and (min-width: 992px) {
+  .case-item:first-child .case-open { opacity: 1; }
+}
+.case-photo { border-radius: 0; }
+.case-arrow svg { width: 1rem; height: 1rem; }
+.case-body-top { display: flex; flex-direction: column; }
+.results-stat { display: flex; flex-direction: column; }
+.results-note { max-width: 36rem; }
+
+/* ---------- Attorneys ---------- */
+.counsel-stage.is-home { margin-top: 0; }
+.counsel-photo { border-radius: 0; }
+.counsel-arrow-icon { width: 1.25rem; }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .counsel-track { display: grid; row-gap: var(--_spacing---space-1-normal); }
+  .counsel-plate { opacity: 1; }
+}
+
+/* ---------- Insights ---------- */
+.guide-shot { border-radius: 0; }
+.guide-head .arrow-icon { width: 1.5rem; flex-shrink: 0; color: var(--_color---brand--white); }
+.guide-card { position: relative; }
+
+/* ---------- FAQ ---------- */
+.contact-image { display: block; }
+.contact-title { color: var(--_color---brand--white); }
+.faq-question { width: 100%; text-align: left; }
+
+/* ---------- CTA ---------- */
+.cta-row { will-change: transform; }
+
+/* ---------- Footer ---------- */
+.footer-logo svg, .nav-brand svg { width: 34px; height: 34px; flex-shrink: 0; }
+.footer-col .regular-paragraph { max-width: 24rem; }
+.footer-contact-link { display: inline-flex; align-items: center; gap: .375rem; color: var(--_color---brand--white); font-weight: var(--fonts-weight--medium); }
+.footer-copy { margin: 0; font-size: var(--_typography---font-size--font-large); }
+.footer-copy .footer-credit { font-size: inherit; line-height: inherit; }
+.footer-image { display: block; }
+.to-top { font-size: 1.125rem; }
+
+/* =====================================================================
+   Phone layout (≤479px, designed at 375px)
+   ===================================================================== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; }
+
+@media screen and (max-width: 479px) {
+  /* Hero: fit the real visible viewport, full-width thumb-friendly CTAs, compact 2×2 stats */
+  .hero-home-area { min-height: 100svh; padding-top: 7rem; }
+  .hero-content { width: 100%; row-gap: 1.125rem; }
+  .hero-actions { width: 100%; flex-direction: column; align-items: stretch; row-gap: .75rem; }
+  .hero-actions .button-primary { width: 100%; justify-content: space-between; }
+  .hero-stats-band { margin-top: 2.5rem; }
+  .hero-stats-grid { grid-template-columns: 1fr 1fr; column-gap: .75rem; row-gap: 1.25rem; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+  .hero-stat-item { column-gap: .625rem; }
+  .hero-stat-icon { width: 2.5rem; height: 2.5rem; }
+  .hero-stat-icon-image { width: 1.125rem; }
+  .hero-stats-band .stat-number { font-size: 1.375rem; }
+  .paragraph-small.is-white.is-stat-label { font-size: .8125rem; line-height: 1.3; }
+
+  /* About bento */
+  .bento-card { padding: 1.375rem; row-gap: 1.5rem; }
+
+  /* How we work */
+  .step-card.is-stack { padding: .875rem; row-gap: 1rem; }
+  .card-heading { font-size: 1.375rem; }
+
+  /* Testimonial wheel */
+  .orbit-content { padding: 1rem; row-gap: .625rem; }
+
+  /* Why us */
+  .reasons-center { padding: 2rem 1.25rem; }
+  .reason-card { padding: 1.5rem; row-gap: .75rem; }
+  .reason-title { font-size: 1.375rem; }
+
+  /* Case results */
+  .results-stats { column-gap: 1.5rem; }
+  .case-body { padding: 1.25rem; }
+  .case-title { font-size: 1.25rem; }
+
+  /* Attorneys slider: stack the glass plate so names don't get squeezed */
+  .counsel-slider .counsel-plate { flex-direction: column; align-items: flex-start; row-gap: .75rem; }
+  .counsel-slider .counsel-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: .375rem; }
+  .counsel-slider .counsel-name { font-size: 1.25rem; }
+
+  /* Insights marquee: narrower cards so the next one peeks in */
+  .guide-marquee-item { width: 17.5rem; }
+  .guide-marquee .guide-card { height: 22rem; }
+  .guide-plate { margin: .5rem; padding: 1rem; row-gap: .75rem; }
+  .guide-title { font-size: 1.125rem; }
+
+  /* FAQ */
+  .faq-question { padding: 1.125rem 1.25rem; font-size: 1.0625rem; }
+  .faq-answer { padding-left: 1.25rem; padding-right: 1.25rem; padding-bottom: 1.125rem; }
+  .faq-answer .body-text { font-size: .9375rem; }
+
+  /* CTA */
+  .cta-content .button-primary { width: 100%; justify-content: space-between; }
+
+  /* Footer: centred band, two-column link grid, single-row bottom bar */
+  .footer-band .footer-row { flex-direction: column; align-items: center; row-gap: 1.25rem; text-align: center; }
+  .footer-grid { grid-template-columns: 1fr 1fr; column-gap: 1.5rem; row-gap: 2.5rem; }
+  .footer-grid .footer-col:first-child,
+  .footer-grid .footer-col:last-child { grid-column: 1 / -1; }
+  .footer-bottom .footer-row { flex-wrap: nowrap; align-items: center; padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .footer-copy { font-size: .8125rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
