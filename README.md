@@ -131,5 +131,5 @@ npm run start     # Serve the production build
 | Field              | Value                       |
 | ------------------ | --------------------------- |
 | Designer           | Mirna                       |
-| Design Status      | Completed                   |
+| Tool               | Claude Code                 |
 
