@@ -8,7 +8,7 @@ Motion is built with GSAP (ScrollTrigger and SplitText): smooth wheel scrolling,
 
 Page content (practice areas, steps, testimonials, cases, attorneys, insights, FAQ) and image URLs are maintained in `lib/data.ts`. The brand name and logo are in `components/Logo.tsx`. The site has no CMS, analytics, or environment variables and runs locally out of the box.
 
-> **Note:** Names, testimonials, case results, statistics, phone numbers, and the address are placeholder content. Photos and the about-section video are currently loaded from a remote CDN. Replace both with the firm's own content and licensed media before going live.
+> **Note:** The project details in this README (designer, status, and dates) are real. The content shown *on the website itself* is sample content: the attorney names, client testimonials, case results, statistics, phone numbers, email, and office address are placeholders, and the photos and about-section video are loaded from a remote CDN. Replace them with the firm's own content and licensed media before going live.
 
 ## 2. Languages, Runtime, and Packages
 
@@ -104,6 +104,27 @@ npm run start     # Serve the production build
 | `lib/data.ts`                          | All page content and image/video URLs                                                                                             |
 | `next.config.mjs`, `tsconfig.json`     | Next.js and TypeScript configuration                                                                                              |
 | `package.json` / `package-lock.json`   | Scripts and dependency definitions/lockfile                                                                                       |
+
+## 5. Project Details
+
+| Field            | Value                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------- |
+| Project          | Meridian Law - law-firm website (frontend)                                              |
+| Owner / Designer | Mirna                                                                                   |
+| Repository       | [github.com/MirnaBahaa/Meridian-Law](https://github.com/MirnaBahaa/Meridian-Law)        |
+| Type             | Marketing website for a New York law firm                                               |
+| Scope            | Homepage (12 sections: navbar, hero, about, practice areas, how we work, testimonials, why us, case results, attorneys, insights, FAQ, call to action, footer) |
+| Layouts          | Desktop (≥992px), tablet (768–991px), phone landscape (480–767px), phone (≤479px, designed at 375px) |
+| Brand            | Meridian Law: original globe-and-meridian logo; forest green `#123B32`, terracotta `#A95335` / `#C56A45`, white smoke `#F7F4EC` |
+| Typography       | Inter Tight (headings), Geist (body)                                                    |
+| Accessibility    | Keyboard-reachable menus and controls, ARIA labels, alt text, reduced-motion support    |
+| Started          | November 2026                                                                           |
+
+### Remaining work
+
+- Replace the sample site content (attorneys, testimonials, case results, statistics, contact details) with the firm's real information.
+- Replace the CDN-hosted photos and video with licensed media stored in the project.
+- Build the pages the navigation already links to: About, Practice Areas, Attorneys, Case Results, Insights, Contact, Privacy Policy, Legal Notice, and the individual practice/case/attorney/insight pages.
 
 ## Project Status
 
