@@ -1,5 +1,11 @@
 # Meridian Law - Frontend
 
+<p align="center">
+  <img src="docs/homepage-hero.jpg" alt="Meridian Law homepage: hero section with the headline “Trusted counsel, proven results.”, consultation buttons, and firm statistics" width="100%">
+</p>
+
+<p align="center"><strong>Trusted counsel, proven results.</strong> A modern, animated law-firm website built with Next.js.</p>
+
 A responsive, single-page law-firm website built with Next.js, React and GSAP, with separate desktop, tablet and phone (375px) layouts and scroll animations that respect `prefers-reduced-motion`. Page content lives in `lib/data.ts`; the brand name and logo in `components/Logo.tsx`.
 
 > The project details below are real. The content on the site itself (attorneys, testimonials, case results, statistics, contact details) is sample content, and photos/video load from a remote CDN. Replace both before going live.
