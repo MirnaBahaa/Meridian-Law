@@ -132,5 +132,4 @@ npm run start     # Serve the production build
 | ------------------ | --------------------------- |
 | Designer           | Mirna                       |
 | Design Status      | Completed                   |
-| Review Status      | Not Reviewed                |
-| Development Status | In Progress (homepage done) |
+
