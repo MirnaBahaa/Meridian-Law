@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { PracticeCardMain } from "./Cards";
 import type { PracticeCard, PracticeTab } from "@/lib/content/practice";
 
-/** Webflow-style tabs (fade out 100ms, fade in 300ms) filtering the practice-area cards. */
+/** Tabs (fade out 100ms, fade in 300ms) filtering the practice-area cards. */
 export default function PracticeTabs({ tabs, cards }: { tabs: PracticeTab[]; cards: PracticeCard[] }) {
   const [current, setCurrent] = useState(0);
   const panes = useRef<(HTMLDivElement | null)[]>([]);

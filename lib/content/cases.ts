@@ -1,4 +1,4 @@
-// Case results + case studies content (captured from the live site; "Lawency" rebranded to Meridian Law).
+// Case results + case studies content (captured from the live site).
 
 export type CaseBlock =
   | { type: "h2" | "h3" | "p"; text: string }

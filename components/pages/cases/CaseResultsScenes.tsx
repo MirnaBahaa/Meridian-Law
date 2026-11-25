@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /**
- * Case Results desktop (≥992px) scroll scenes, matching the live Webflow interactions:
+ * Case Results desktop (≥992px) scroll scenes, matching the reference design:
  * - `.ledger-pin` (350vh, sticky inner): scrubbed — each `.ledger-row` lights up (opacity .25 → 1) and its
  *   `.ledger-bar` grows (scaleX 0 → 1) one after another; `.ledger-total` fades .15 → 1 across the whole pin.
  * - `.result-list` items drift up into place (odd 20px, even 60px → 0) as the list scrolls in.

@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 
-/** Newsletter signup (no backend): on submit hide the form and show the Webflow-style success block. */
+/** Newsletter signup (no backend): on submit hide the form and show the success block. */
 export default function NewsletterForm() {
   const [done, setDone] = useState(false);
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

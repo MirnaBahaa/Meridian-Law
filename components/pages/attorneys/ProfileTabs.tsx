@@ -4,7 +4,7 @@ import { useState, type KeyboardEvent, type ReactNode } from "react";
 
 type Props = { tabs: string[]; panes: ReactNode[] };
 
-/** `.profile-tabs` / `.profile-pane` switcher: one pane open at a time (Webflow click interaction on the live site). */
+/** `.profile-tabs` / `.profile-pane` switcher: one pane open at a time (click interaction on the reference design). */
 export default function ProfileTabs({ tabs, panes }: Props) {
   const [active, setActive] = useState(0);
   const onKey = (e: KeyboardEvent, i: number) => {

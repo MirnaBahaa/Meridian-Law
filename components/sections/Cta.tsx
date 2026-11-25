@@ -24,7 +24,9 @@ export default function Cta() {
               Tell us what happened. A senior attorney will point you in the right direction — free.
             </p>
           </div>
-          <Btn href="/contact" label="Book a free consultation" reveal="4" />
+          <div data-reveal="4">
+            <Btn href="/contact" label="Book a free consultation" />
+          </div>
         </div>
       </div>
     </section>

@@ -194,6 +194,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .faq-answer .body-text { font-size: .9375rem; }
 
   /* CTA */
+  .cta-content > [data-reveal] { width: 100%; }
   .cta-content .button-primary { width: 100%; justify-content: space-between; }
 
   /* Footer: centred band, two-column link grid, single-row bottom bar */

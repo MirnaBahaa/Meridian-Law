@@ -33,10 +33,10 @@ No environment variables are required.
 
 ## Structure
 
-- `app/`: shared layout (navbar, footer, animations), home page, inner-page routes (`insights`, `insight/[slug]`, `attorneys`, `attorney/[slug]`, `case-results`, `case-study/[slug]`, …), favicon, and styles (`styles.css` full design system, `site.css` additions and phone layout)
+- `app/`: shared layout (navbar, footer, animations), home page, inner-page routes (`about`, `contact`, `practice-areas`, `practice-area/[slug]`, `attorneys`, `attorney/[slug]`, `case-results`, `case-study/[slug]`, `insights`, `insight/[slug]`, `not-found`), favicon, and styles (`styles.css` full design system, `site.css` additions and phone layout)
 - `components/sections/`: one file per homepage section; `components/pages/`: inner-page components
 - `components/`: navbar, motion layer (`Motion.tsx`), sliders, testimonial wheel, FAQ, buttons, icons, logo
-- `lib/data.ts`: homepage content; `lib/content/`: inner-page content (insights, attorneys, cases, …)
+- `lib/data.ts`: homepage content; `lib/content/`: inner-page content (company, practice, attorneys, cases, insights)
 
 ## Homepage Sections
 
