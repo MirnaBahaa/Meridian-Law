@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -348,7 +347,6 @@ function tablet() {
 }
 
 export default function Motion() {
-  const pathname = usePathname();
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const html = document.documentElement;
@@ -409,7 +407,7 @@ export default function Motion() {
       mm?.revert();
       ctx?.revert();
     };
-  }, [pathname]);
+  }, []);
 
   return null;
 }
