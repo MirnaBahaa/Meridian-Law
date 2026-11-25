@@ -1,10 +1,11 @@
+import { withBase } from "@/lib/base";
 import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import type { PracticeArea, PracticeCard } from "@/lib/content/practice";
 
 /** `.practice-card-main` (index page grid). Hover is driven by PracticeAreasMotion. */
 export function PracticeCardMain({ card, reveal = true }: { card: PracticeCard; reveal?: boolean }) {
   return (
-    <a className="practice-card-main" href={`/practice-area/${card.slug}`} data-reveal={reveal ? "0" : undefined}>
+    <a className="practice-card-main" href={withBase(`/practice-area/${card.slug}`)} data-reveal={reveal ? "0" : undefined}>
       <div className="card-media">
         <img className="card-image" src={card.image} alt={card.name} loading="lazy" />
         <div className="card-tint practice" />
@@ -37,7 +38,7 @@ export function PracticeCardRelated({ card, current }: { card: PracticeCard; cur
     <div data-reveal="0" role="listitem">
       <a
         className={current ? "practice-card w--current" : "practice-card"}
-        href={`/practice-area/${card.slug}`}
+        href={withBase(`/practice-area/${card.slug}`)}
         aria-current={current ? "page" : undefined}
       >
         <div className="card-media">
@@ -69,7 +70,7 @@ export function PracticeCardRelated({ card, current }: { card: PracticeCard; cur
 export function AttorneyCard({ a }: { a: PracticeArea["attorneys"][number] }) {
   return (
     <div data-reveal="2" role="listitem">
-      <a className="releted-attorney-card" href={a.href}>
+      <a className="releted-attorney-card" href={withBase(a.href)}>
         <div className="attorney-media">
           <img className="releted-attorney-img" src={a.img} alt={a.name} loading="lazy" />
           <div className="attorney-badge">

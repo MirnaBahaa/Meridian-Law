@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import { IMG, REASONS } from "@/lib/data";
 
@@ -14,7 +15,7 @@ export default function Reasons() {
               <p className="body-text is-sage" data-reveal="4">
                 New Yorkers have trusted us since 1999 with the cases that shape their lives.
               </p>
-              <Btn href="/attorneys" label="Meet our attorneys" reveal="4" />
+              <Btn href={withBase("/attorneys")} label="Meet our attorneys" reveal="4" />
             </div>
             {REASONS.map((r) => (
               <div className={`reason-card ${r.pos}`} key={r.n}>

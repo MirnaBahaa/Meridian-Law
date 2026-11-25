@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import "./page.css";
 import Btn from "@/components/Btn";
 import Cta from "@/components/sections/Cta";
@@ -28,7 +29,7 @@ export default function AttorneysPage() {
             <div className="hero-content is-compact">
               <div className="breadcrumb">
                 <div className="dot" />
-                <a className="breadcrumb-link" href="/">Home</a>
+                <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                 <div className="breadcrumb-link">/</div>
                 <div>Attorneys</div>
               </div>
@@ -42,7 +43,7 @@ export default function AttorneysPage() {
                 </p>
               </div>
               <div className="hero-actions" data-load="media">
-                <Btn href="/contact" label="Book a consultation" />
+                <Btn href={withBase("/contact")} label="Book a consultation" />
               </div>
             </div>
           </div>
@@ -85,7 +86,7 @@ export default function AttorneysPage() {
                 We’re hiring trial attorneys, paralegals and client-care specialists who want real responsibility from
                 day one — and a firm that backs them.
               </p>
-              <Btn href={`mailto:${CAREERS_EMAIL}`} label="View open roles" variant="line" />
+              <Btn href={withBase(`mailto:${CAREERS_EMAIL}`)} label="View open roles" variant="line" />
             </div>
           </div>
           <div className="careers-bento">
@@ -115,14 +116,14 @@ export default function AttorneysPage() {
                     <div className="role-title">{r.title}</div>
                     <div className="paragraph-small">{r.meta}</div>
                   </div>
-                  <a className="role-link" href={apply(`Application: ${r.title}`)}>
+                  <a className="role-link" href={withBase(apply(`Application: ${r.title}`))}>
                     Apply
                   </a>
                 </div>
               ))}
               <div className="cv-note">
                 <div className="paragraph-small">Don’t see your role?</div>
-                <a className="role-link" href={apply("Open application")}>
+                <a className="role-link" href={withBase(apply("Open application"))}>
                   Send your CV
                 </a>
               </div>

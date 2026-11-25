@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Btn from "@/components/Btn";
@@ -39,7 +40,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
           <div className="container is-panel">
             <div className="hero-content is-compact">
               <div className="breadcrumb">
-                <a className="breadcrumb-link" href="/insights">Insights</a>
+                <a className="breadcrumb-link" href={withBase("/insights")}>Insights</a>
                 <p>/</p>
                 <p>{post.category}</p>
               </div>
@@ -67,7 +68,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                   <div className="w-richtext">
                     {post.toc.map((t) => (
                       <p className="rail-link" key={t.id}>
-                        <a className="rail-link" href={`#${t.id}`}>{t.label}</a>
+                        <a className="rail-link" href={withBase(`#${t.id}`)}>{t.label}</a>
                       </p>
                     ))}
                   </div>
@@ -75,7 +76,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                 <div className="rail-group is-line">
                   <p className="small-label">Share</p>
                   {SHARE.map((s) => (
-                    <a className="rail-link" href={s.href} key={s.label} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                    <a className="rail-link" href={withBase(s.href)} key={s.label} target="_blank" rel="noopener noreferrer">{s.label}</a>
                   ))}
                 </div>
               </aside>
@@ -98,7 +99,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                     <p className="body-text is-sage">Talk to a senior attorney. Free, confidential case review.</p>
                   </div>
                   <div className="hero-actions">
-                    <Btn href="/contact" label="Free case review" />
+                    <Btn href={withBase("/contact")} label="Free case review" />
                   </div>
                 </div>
 
@@ -125,12 +126,12 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                 <h2 className="heading-text blog">More guides for your case.</h2>
               </div>
               <div className="hero-actions" data-reveal="2">
-                <Btn href="/insights" label="All guides" variant="line" />
+                <Btn href={withBase("/insights")} label="All guides" variant="line" />
               </div>
             </div>
             <div className="post-related">
               <div>
-                <a className="post-feature" href={`/insight/${feature.slug}`}>
+                <a className="post-feature" href={withBase(`/insight/${feature.slug}`)}>
                   <img className="post-feature-photo" src={feature.image} alt={feature.title} loading="lazy" />
                   <p className="small-label">{feature.category}</p>
                   <h3 className="post-feature-title">{feature.title}</h3>
@@ -145,7 +146,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                 <div className="post-index" role="list">
                   {rows.map((p) => (
                     <div key={p.slug} role="listitem">
-                      <a className="post-row" href={`/insight/${p.slug}`}>
+                      <a className="post-row" href={withBase(`/insight/${p.slug}`)}>
                         <div className="post-row-media">
                           <img className="post-row-photo" src={p.image} alt={p.title} loading="lazy" />
                         </div>

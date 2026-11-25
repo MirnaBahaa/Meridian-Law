@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import { CTA_ROWS } from "@/lib/data";
 
@@ -25,7 +26,7 @@ export default function Cta() {
             </p>
           </div>
           <div data-reveal="4">
-            <Btn href="/contact" label="Book a free consultation" />
+            <Btn href={withBase("/contact")} label="Book a free consultation" />
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import Cta from "@/components/sections/Cta";
 import { ResultCard } from "@/components/pages/cases/CaseCards";
@@ -24,7 +25,7 @@ export default function CaseResultsPage() {
             <div className="hero-content">
               <div className="breadcrumb">
                 <div className="dot" />
-                <a className="breadcrumb-link" href="/">Home</a>
+                <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                 <div className="breadcrumb-link">/</div>
                 <div>Case Results</div>
               </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { withBase } from "@/lib/base";
 import { useState } from "react";
 import Btn from "@/components/Btn";
 import { ArrowUpRight } from "@/components/Icons";
@@ -22,7 +23,7 @@ export default function RelatedAttorneys({ currentSlug }: { currentSlug: string 
               {RELATED_ATTORNEYS.map((a, i) => (
                 <div className="related-item w-dyn-item" role="listitem" key={a.slug}>
                   <a
-                    href={`/attorney/${a.slug}`}
+                    href={withBase(`/attorney/${a.slug}`)}
                     className={a.slug === currentSlug ? "related-row w-inline-block w--current" : "related-row w-inline-block"}
                     aria-current={a.slug === currentSlug ? "page" : undefined}
                     onMouseEnter={() => setActive(i)}
@@ -52,7 +53,7 @@ export default function RelatedAttorneys({ currentSlug }: { currentSlug: string 
               ))}
             </div>
           </div>
-          <Btn href="/attorneys" label="All attorneys" variant="line" />
+          <Btn href={withBase("/attorneys")} label="All attorneys" variant="line" />
         </div>
       </div>
     </section>

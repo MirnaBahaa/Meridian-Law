@@ -1,10 +1,11 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import { ArrowRight } from "../Icons";
 import { GUIDES, type Guide } from "@/lib/data";
 
 function GuideCard({ g, hidden }: { g: Guide; hidden?: boolean }) {
   return (
-    <a href={g.href} className="guide-card" tabIndex={hidden ? -1 : undefined}>
+    <a href={withBase(g.href)} className="guide-card" tabIndex={hidden ? -1 : undefined}>
       <img src={g.img} alt={hidden ? "" : g.title} className="guide-shot" loading="lazy" />
       <div className="guide-plate">
         <div className="guide-tags">
@@ -30,7 +31,7 @@ export default function Insights() {
             <div className="badge is-forest">Insights</div>
             <h2 className="heading-text">Guides from our partners.</h2>
           </div>
-          <Btn href="/insights" label="All insights" variant="line" reveal="2" />
+          <Btn href={withBase("/insights")} label="All insights" variant="line" reveal="2" />
         </div>
 
         <div className="guide-layout">

@@ -1,12 +1,13 @@
 "use client";
 
+import { withBase } from "@/lib/base";
 import { useState, type KeyboardEvent } from "react";
 import { ArrowRight } from "@/components/Icons";
 import type { Insight } from "@/lib/content/insights";
 
 function PostCard({ p }: { p: Insight }) {
   return (
-    <a className="post-card" href={`/insight/${p.slug}`}>
+    <a className="post-card" href={withBase(`/insight/${p.slug}`)}>
       <div className="post-media">
         <img className="post-photo" src={p.image} alt={p.title} loading="lazy" />
       </div>

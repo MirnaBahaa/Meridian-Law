@@ -31,6 +31,10 @@ npm run start     # serve the build
 
 No environment variables are required.
 
+### Live site (GitHub Pages)
+
+The site is published at **https://mirnabahaa.github.io/Meridian-Law/**. Every push to `main` runs `.github/workflows/deploy-pages.yml`, which builds a static copy (`npm run build:pages` → `out/`, with the `/Meridian-Law` base path) and deploys it. Internal links go through `withBase()` in `lib/base.ts`, so they work both locally and on Pages. In the repository settings, **Pages → Source** must be set to **GitHub Actions**.
+
 ## Structure
 
 - `app/`: shared layout (navbar, footer, animations), home page, inner-page routes (`about`, `contact`, `practice-areas`, `practice-area/[slug]`, `attorneys`, `attorney/[slug]`, `case-results`, `case-study/[slug]`, `insights`, `insight/[slug]`, `not-found`), favicon, and styles (`styles.css` full design system, `site.css` additions and phone layout)

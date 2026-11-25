@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import "./page.css";
 import Btn from "@/components/Btn";
@@ -24,7 +25,7 @@ export default function PracticeAreasPage() {
             <div className="hero-content is-compact">
               <div className="breadcrumb">
                 <div className="dot" />
-                <a className="breadcrumb-link" href="/">Home</a>
+                <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                 <div className="breadcrumb-link">/</div>
                 <div>Practice Areas</div>
               </div>
@@ -35,8 +36,8 @@ export default function PracticeAreasPage() {
                 <p className="regular-paragraph is-white is-large">{PA_HERO.text}</p>
               </div>
               <div className="hero-actions" data-load="media">
-                <Btn href="/contact" label="Book a free call" />
-                <Btn href="/attorneys" label="Meet our attorneys" variant="outline" />
+                <Btn href={withBase("/contact")} label="Book a free call" />
+                <Btn href={withBase("/attorneys")} label="Meet our attorneys" variant="outline" />
               </div>
               <div className="page-stats" data-load="media">
                 {PA_HERO.stats.map((s, i) => (
@@ -192,7 +193,7 @@ export default function PracticeAreasPage() {
                   <div className="contact-body">
                     <h3 className="card-heading is-white">Still have a question?</h3>
                     <p className="regular-paragraph is-white">Our intake team replies within one business hour.</p>
-                    <Btn href="/contact" label="Ask our team" />
+                    <Btn href={withBase("/contact")} label="Ask our team" />
                   </div>
                 </div>
               </div>

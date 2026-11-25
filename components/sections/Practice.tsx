@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import PopSlider from "../PopSlider";
 import { ArrowRight, ArrowUpRight } from "../Icons";
@@ -7,7 +8,7 @@ const POP = { card: ".practice-slide", image: ".practice-slide-image", parts: [[
 
 function PracticeSlide({ p }: { p: Practice }) {
   return (
-    <a href={p.href} className="practice-slide">
+    <a href={withBase(p.href)} className="practice-slide">
       <img src={p.img} alt={p.title} className="practice-slide-image" loading="lazy" />
       <div className="practice-slide-blend" />
       <div className="practice-arrow" aria-hidden="true"><ArrowUpRight /></div>
@@ -40,7 +41,7 @@ export default function PracticeAreas() {
           </div>
           <div className="section-intro" data-reveal="2">
             <p className="regular-paragraph">Every matter is led by a partner with at least fifteen years of experience in that field.</p>
-            <Btn href="/practice-areas" label="View all practice areas" variant="line" />
+            <Btn href={withBase("/practice-areas")} label="View all practice areas" variant="line" />
           </div>
         </div>
       </div>

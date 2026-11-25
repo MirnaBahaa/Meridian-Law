@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import { STEPS } from "@/lib/data";
 
@@ -14,7 +15,7 @@ export default function HowWeWork() {
             <p className="regular-paragraph" data-reveal="4">
               You always know what is happening, who is working on your case and what comes next. Most clients hear from us within 24 hours.
             </p>
-            <Btn href="/contact" label="Start with a free review" reveal="4" />
+            <Btn href={withBase("/contact")} label="Start with a free review" reveal="4" />
           </div>
 
           <div className="step-list">

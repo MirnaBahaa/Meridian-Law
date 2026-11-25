@@ -1,5 +1,6 @@
 "use client";
 
+import { withBase } from "@/lib/base";
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Btn from "./Btn";
@@ -13,7 +14,7 @@ function MegaColumns() {
         <div className="mega-column" key={col.label}>
           <p className="mega-label">{col.label}</p>
           {col.links.map((l) => (
-            <a key={l.title} href={l.href} className={l.current ? "mega-link w--current" : "mega-link"} aria-current={l.current ? "page" : undefined}>
+            <a key={l.title} href={withBase(l.href)} className={l.current ? "mega-link w--current" : "mega-link"} aria-current={l.current ? "page" : undefined}>
               <p className="mega-link-title">{l.title}</p>
               <p className="mega-link-text">{l.text}</p>
             </a>
@@ -127,14 +128,14 @@ export default function Navbar() {
           <div className="nav-bar">
             <div className="nav-glass" />
             <div className="nav-inner">
-              <a href="/" className="nav-brand" aria-label={`${BRAND} home`}>
+              <a href={withBase("/")} className="nav-brand" aria-label={`${BRAND} home`}>
                 <LogoMark className="nav-logo-icon" />
                 <span>{BRAND}</span>
               </a>
 
               <nav className="nav-menu" aria-label="Main">
-                <a href="/" className="nav-link" aria-current="page">Home</a>
-                <a href="/about" className="nav-link">About</a>
+                <a href={withBase("/")} className="nav-link" aria-current="page">Home</a>
+                <a href={withBase("/about")} className="nav-link">About</a>
                 <div className="nav-dropdown" onMouseEnter={openMega} onMouseLeave={scheduleClose}>
                   <button
                     type="button"
@@ -148,12 +149,12 @@ export default function Navbar() {
                     <img ref={chevronRef} src={IMG.chevron} alt="" className="nav-chevron" />
                   </button>
                 </div>
-                <a href="/attorneys" className="nav-link">Attorneys</a>
-                <a href="/contact" className="nav-link">Contact</a>
+                <a href={withBase("/attorneys")} className="nav-link">Attorneys</a>
+                <a href={withBase("/contact")} className="nav-link">Contact</a>
               </nav>
 
               <div className="nav-actions">
-                <Btn href="/contact" label="Book a call" className="is-nav-desktop" />
+                <Btn href={withBase("/contact")} label="Book a call" className="is-nav-desktop" />
                 <div className="nav-mobile-dropdown">
                   <button
                     type="button"
@@ -175,16 +176,16 @@ export default function Navbar() {
                 <img src={IMG.meetingRoom} alt="Meridian Law meeting room" className="mega-feature-image" loading="lazy" />
                 <p className="mega-feature-title">A senior partner on every case</p>
                 <p className="mega-feature-text">Since 1999 our New York attorneys have taken the first call and led every case to the end.</p>
-                <a href="/contact" className="mega-feature-link">Book a free review →</a>
+                <a href={withBase("/contact")} className="mega-feature-link">Book a free review →</a>
               </div>
               <MegaColumns />
             </div>
           </div>
 
           <div id="mobile-menu" className="nav-mobile-menu" ref={mobileRef} data-native-scroll="">
-            <a href="/" className="nav-link is-mobile w--current" aria-current="page">Home</a>
-            <a href="/about" className="nav-link is-mobile">About</a>
-            <a href="/practice-areas" className="nav-link is-mobile">Practice Areas</a>
+            <a href={withBase("/")} className="nav-link is-mobile w--current" aria-current="page">Home</a>
+            <a href={withBase("/about")} className="nav-link is-mobile">About</a>
+            <a href={withBase("/practice-areas")} className="nav-link is-mobile">Practice Areas</a>
             <div className="mobile-pages">
               <button
                 type="button"
@@ -203,9 +204,9 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-            <a href="/attorneys" className="nav-link is-mobile">Attorneys</a>
-            <a href="/contact" className="nav-link is-mobile">Contact</a>
-            <Btn href="/contact" label="Free consultation" className="is-mobile" />
+            <a href={withBase("/attorneys")} className="nav-link is-mobile">Attorneys</a>
+            <a href={withBase("/contact")} className="nav-link is-mobile">Contact</a>
+            <Btn href={withBase("/contact")} label="Free consultation" className="is-mobile" />
           </div>
         </div>
       </div>

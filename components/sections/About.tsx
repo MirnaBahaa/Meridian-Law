@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import AboutVideo from "../AboutVideo";
 import { ArrowUpRight } from "../Icons";
 import { IMG } from "@/lib/data";
@@ -38,7 +39,7 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <a href="/about" className="card-link">
+            <a href={withBase("/about")} className="card-link">
               <span className="button-label">
                 <span className="button-text is-front">Our story</span>
                 <span className="button-text is-back" aria-hidden="true">Our story</span>

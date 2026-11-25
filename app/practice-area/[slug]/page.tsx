@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Btn from "@/components/Btn";
@@ -40,9 +41,9 @@ export default async function PracticeAreaPage({ params }: Params) {
           <div className="container hero-container">
             <div className="hero-content is-compact">
               <div className="breadcrumb">
-                <a className="breadcrumb-link" href="/">Home</a>
+                <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                 <div>/</div>
-                <a className="breadcrumb-link" href="/practice-areas">Practice Areas</a>
+                <a className="breadcrumb-link" href={withBase("/practice-areas")}>Practice Areas</a>
                 <div>/</div>
                 <div>{name}</div>
               </div>
@@ -51,8 +52,8 @@ export default async function PracticeAreaPage({ params }: Params) {
                 <p className="body-text is-sage">{area.heroText}</p>
               </div>
               <div className="hero-actions" data-load="media">
-                <Btn href="/contact" label="Free case review" />
-                <Btn href={TEL} label={`Call ${PA_SECTION.callNumber}`} variant="outline" />
+                <Btn href={withBase("/contact")} label="Free case review" />
+                <Btn href={withBase(TEL)} label={`Call ${PA_SECTION.callNumber}`} variant="outline" />
               </div>
               <div className="trust-row" data-load="media">
                 {TRUST.map((t) => (
@@ -86,7 +87,7 @@ export default async function PracticeAreaPage({ params }: Params) {
               <nav className="page-nav" data-reveal="0" aria-label="On this page">
                 <div className="page-nav-title">On this page</div>
                 {PA_NAV.map((l, i) => (
-                  <a className={i === 0 ? "page-nav-link is-current" : "page-nav-link"} href={l.href} key={l.href}>
+                  <a className={i === 0 ? "page-nav-link is-current" : "page-nav-link"} href={withBase(l.href)} key={l.href}>
                     {l.label}
                   </a>
                 ))}
@@ -144,10 +145,10 @@ export default async function PracticeAreaPage({ params }: Params) {
                   <div className="badge">{PA_SECTION.consultBadge}</div>
                   <div className="card-heading is-white">{area.consult.heading}</div>
                   <div className="consult-text">{area.consult.text}</div>
-                  <Btn href="/contact" label={PA_SECTION.consultButton} />
+                  <Btn href={withBase("/contact")} label={PA_SECTION.consultButton} />
                   <div className="call-block">
                     <div className="call-label">{PA_SECTION.callLabel}</div>
-                    <a className="call-number" href={TEL}>{PA_SECTION.callNumber}</a>
+                    <a className="call-number" href={withBase(TEL)}>{PA_SECTION.callNumber}</a>
                   </div>
                 </div>
                 <div className="why-card">
@@ -180,7 +181,7 @@ export default async function PracticeAreaPage({ params }: Params) {
                 <h2 className="heading-text">The attorneys on your case.</h2>
               </div>
               <div data-reveal="2">
-                <Btn href="/attorneys" label="All attorneys" variant="line" />
+                <Btn href={withBase("/attorneys")} label="All attorneys" variant="line" />
               </div>
             </div>
             <div className="attorney-list" role="list">
@@ -196,7 +197,7 @@ export default async function PracticeAreaPage({ params }: Params) {
             <div className="section-top">
               <h2 className="heading-text">Other ways we can help.</h2>
               <div data-reveal="2">
-                <Btn href="/practice-areas" label="All practice areas" variant="line" />
+                <Btn href={withBase("/practice-areas")} label="All practice areas" variant="line" />
               </div>
             </div>
             <div className="practice-list" role="list">

@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import { ArrowUpRight } from "../Icons";
 import { FOOTER_GALLERY } from "@/lib/data";
 import { BRAND, LogoMark } from "../Logo";
@@ -20,7 +21,7 @@ const PAGES = [
 
 function Logo() {
   return (
-    <a href="/" className="footer-logo" aria-label={`${BRAND} home`}>
+    <a href={withBase("/")} className="footer-logo" aria-label={`${BRAND} home`}>
       <LogoMark />
       <span>{BRAND}</span>
     </a>
@@ -35,13 +36,13 @@ export default function Footer() {
           <div className="footer-row">
             <div className="social-list">
               {SOCIALS.map((s) => (
-                <a key={s.name} href={s.href} className="square-link" target="_blank" rel="noopener noreferrer" aria-label={s.name}>
+                <a key={s.name} href={withBase(s.href)} className="square-link" target="_blank" rel="noopener noreferrer" aria-label={s.name}>
                   {s.label}
                 </a>
               ))}
             </div>
             <Logo />
-            <a href="/contact" className="footer-contact-link">
+            <a href={withBase("/contact")} className="footer-contact-link">
               Book a free consultation <ArrowUpRight className="inline-arrow" />
             </a>
           </div>
@@ -62,7 +63,7 @@ export default function Footer() {
               <div className="footer-title">Pages</div>
               <div className="accent-line" />
             </div>
-            {PAGES.map(([t, h]) => <a key={t} href={h} className="footer-link">{t}</a>)}
+            {PAGES.map(([t, h]) => <a key={t} href={withBase(h)} className="footer-link">{t}</a>)}
           </div>
           <div className="footer-col">
             <div>

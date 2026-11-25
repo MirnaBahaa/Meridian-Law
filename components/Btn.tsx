@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import { ArrowUpRight } from "./Icons";
 
 type Props = {
@@ -13,7 +14,7 @@ type Props = {
 export default function Btn({ href, label, variant, className, reveal, load }: Props) {
   const cls = ["button-primary", variant && `is-${variant}`, className].filter(Boolean).join(" ");
   return (
-    <a className={cls} href={href} data-reveal={reveal} data-load={load}>
+    <a className={cls} href={withBase(href)} data-reveal={reveal} data-load={load}>
       <span className="button-label">
         <span className="button-text is-front">{label}</span>
         <span className="button-text is-back" aria-hidden="true">{label}</span>

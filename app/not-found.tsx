@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import Btn from "@/components/Btn";
 
@@ -17,7 +18,7 @@ export default function NotFound() {
             The page you are looking for doesn&apos;t exist or has been moved.
           </p>
           <div className="hero-actions" data-load="media">
-            <Btn href="/" label="Back Home" />
+            <Btn href={withBase("/")} label="Back Home" />
           </div>
         </div>
       </div>

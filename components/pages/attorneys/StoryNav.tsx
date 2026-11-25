@@ -1,5 +1,6 @@
 "use client";
 
+import { withBase } from "@/lib/base";
 import { useEffect, useState, type MouseEvent } from "react";
 
 type Link = { href: string; label: string };
@@ -52,7 +53,7 @@ export default function StoryNav({ links }: { links: Link[] }) {
         {links.map((l, i) => (
           <a
             key={l.href}
-            href={l.href}
+            href={withBase(l.href)}
             className={i === current ? "story-nav-link is-current" : "story-nav-link"}
             onClick={(e) => go(e, l.href)}
           >

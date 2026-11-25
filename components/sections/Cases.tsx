@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import { ArrowUpRight } from "../Icons";
 import { CASES } from "@/lib/data";
@@ -28,7 +29,7 @@ export default function Cases() {
             <div className="case-list">
               {CASES.map((c, i) => (
                 <article className="case-item" key={c.href}>
-                  <a href={c.href} className="case-strip" tabIndex={-1} aria-hidden="true">
+                  <a href={withBase(c.href)} className="case-strip" tabIndex={-1} aria-hidden="true">
                     <div className="case-arrow"><ArrowUpRight /></div>
                     <p className="case-label">{c.label}</p>
                     <p className="case-short" data-counter="">{c.amount}</p>
@@ -61,7 +62,7 @@ export default function Cases() {
                             <p className="case-lead-role">Partner</p>
                           </div>
                         </div>
-                        <Btn href={c.href} label="Read case study" variant="line" />
+                        <Btn href={withBase(c.href)} label="Read case study" variant="line" />
                       </div>
                     </div>
                   </div>
@@ -75,7 +76,7 @@ export default function Cases() {
           <p className="paragraph-small results-note">
             Prior results do not guarantee a similar outcome. Amounts are gross recoveries before fees and costs.
           </p>
-          <Btn href="/case-results" label="All case studies" />
+          <Btn href={withBase("/case-results")} label="All case studies" />
         </div>
       </div>
     </section>

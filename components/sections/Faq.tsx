@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import FaqList from "../FaqList";
 import { IMG } from "@/lib/data";
@@ -17,7 +18,7 @@ export default function Faq() {
               <div className="contact-body">
                 <h3 className="contact-title">Still have a question?</h3>
                 <p className="regular-paragraph is-white">Our intake team replies within one business hour.</p>
-                <Btn href="/contact" label="Ask our team" />
+                <Btn href={withBase("/contact")} label="Ask our team" />
               </div>
             </div>
           </div>

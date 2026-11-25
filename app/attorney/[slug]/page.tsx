@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import { notFound } from "next/navigation";
 import "./page.css";
 import Btn from "@/components/Btn";
@@ -82,7 +83,7 @@ export default async function AttorneyPage({ params }: Params) {
       <div className="tag-list">
         <p className="tag">{a.practice}</p>
       </div>
-      <Btn href="/practice-areas" label="All practice areas" variant="line" />
+      <Btn href={withBase("/practice-areas")} label="All practice areas" variant="line" />
     </>,
     <>
       <h3 className="card-heading">Reach this attorney directly</h3>
@@ -130,9 +131,9 @@ export default async function AttorneyPage({ params }: Params) {
           <div className="container is-panel">
             <div className="hero-content is-compact">
               <div className="breadcrumb">
-                <a className="breadcrumb-link" href="/">Home</a>
+                <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                 <p>/</p>
-                <a className="breadcrumb-link" href="/attorneys">Attorneys</a>
+                <a className="breadcrumb-link" href={withBase("/attorneys")}>Attorneys</a>
                 <p>/</p>
                 <p>{a.name}</p>
               </div>
@@ -141,7 +142,7 @@ export default async function AttorneyPage({ params }: Params) {
             <div className="max-width-25" data-load="text">
               <p className="body-text is-sage">{a.summary}</p>
               <div className="hero-actions">
-                <Btn href="/contact" label="Book a consultation" />
+                <Btn href={withBase("/contact")} label="Book a consultation" />
               </div>
             </div>
           </div>

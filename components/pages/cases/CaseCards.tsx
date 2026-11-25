@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import { ArrowUpRight } from "@/components/Icons";
 import type { CaseStudy } from "@/lib/content/cases";
 
@@ -5,7 +6,7 @@ import type { CaseStudy } from "@/lib/content/cases";
 export function ResultCard({ c }: { c: CaseStudy }) {
   return (
     <div className="result-item" role="listitem">
-      <a className="result-card w-inline-block" href={`/case-study/${c.slug}`} data-reveal="0">
+      <a className="result-card w-inline-block" href={withBase(`/case-study/${c.slug}`)} data-reveal="0">
         <div className="result-media">
           <img className="result-photo" src={c.image} alt={c.title} loading="lazy" />
           <p className="result-tag">{c.practice}</p>
@@ -30,7 +31,7 @@ export function ResultCard({ c }: { c: CaseStudy }) {
 export function CaseRow({ c }: { c: CaseStudy }) {
   return (
     <div role="listitem" data-reveal="0">
-      <a className="case-row w-inline-block" href={`/case-study/${c.slug}`}>
+      <a className="case-row w-inline-block" href={withBase(`/case-study/${c.slug}`)}>
         <div className="case-row-media">
           <img className="releted-case-photo" src={c.image} alt={c.title} loading="lazy" />
         </div>

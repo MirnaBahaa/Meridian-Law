@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Btn from "@/components/Btn";
@@ -57,9 +58,9 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="container is-panel">
             <div className="hero-content is-compact">
               <div className="breadcrumb">
-                <a className="breadcrumb-link" href="/">Home</a>
+                <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                 <p>/</p>
-                <a className="breadcrumb-link" href="/case-results">Case results</a>
+                <a className="breadcrumb-link" href={withBase("/case-results")}>Case results</a>
                 <p>/</p>
                 <p>{c.practice}</p>
               </div>
@@ -68,7 +69,7 @@ export default async function CaseStudyPage({ params }: Props) {
             <div className="max-width-25" data-load="text">
               <p className="body-text is-sage">{c.title}</p>
               <div className="hero-actions">
-                <Btn href="/contact" label="Discuss a similar case" />
+                <Btn href={withBase("/contact")} label="Discuss a similar case" />
               </div>
             </div>
           </div>
@@ -140,7 +141,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 to a quick settlement.
               </p>
               <div className="hero-actions">
-                <Btn href="/case-results" label="All results" variant="line" />
+                <Btn href={withBase("/case-results")} label="All results" variant="line" />
               </div>
             </div>
           </div>

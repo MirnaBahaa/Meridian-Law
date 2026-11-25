@@ -1,12 +1,13 @@
 "use client";
 
+import { withBase } from "@/lib/base";
 import { useState } from "react";
 import { ArrowUpRight } from "./Icons";
 import { ATTORNEYS, type Attorney } from "@/lib/data";
 
 export function CounselCard({ a, on = true }: { a: Attorney; on?: boolean }) {
   return (
-    <a href={a.href} className="counsel-card">
+    <a href={withBase(a.href)} className="counsel-card">
       <img src={a.img} alt={`${a.name}, ${a.role} at Meridian Law`} className="counsel-photo" loading="lazy" />
       <div className={on ? "counsel-arrow arrow-on" : "counsel-arrow"} aria-hidden="true">
         <ArrowUpRight className="counsel-arrow-icon" />

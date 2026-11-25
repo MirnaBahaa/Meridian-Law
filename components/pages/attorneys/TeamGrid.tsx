@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import { ATTORNEYS } from "@/lib/content/attorneys";
 
 /**
@@ -10,7 +11,7 @@ export default function TeamGrid() {
       <div className="team-grid w-dyn-items" role="list">
         {ATTORNEYS.map((a, i) => (
           <div role="listitem" className="w-dyn-item" key={a.slug}>
-            <a className="team-card w-inline-block" href={`/attorney/${a.slug}`} data-reveal="2">
+            <a className="team-card w-inline-block" href={withBase(`/attorney/${a.slug}`)} data-reveal="2">
               <img className={i === 0 ? "team-photo photo-zoom" : "team-photo"} src={a.photo} alt={a.name} loading="lazy" />
               <img className="team-photo is-mono" src={a.photo} alt="" loading="lazy" />
               <div className="attorney-badge">

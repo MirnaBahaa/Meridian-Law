@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import "./page.css";
 import Btn from "@/components/Btn";
@@ -31,7 +32,7 @@ export default function InsightsPage() {
               <div className="hero-content">
                 <div className="breadcrumb">
                   <div className="dot" />
-                  <a className="breadcrumb-link" href="/">Home</a>
+                  <a className="breadcrumb-link" href={withBase("/")}>Home</a>
                   <div className="breadcrumb-link">/</div>
                   <div>Insights</div>
                 </div>
@@ -86,7 +87,7 @@ export default function InsightsPage() {
                         </div>
                       </div>
                     </div>
-                    <Btn href={`/insight/${lead.slug}`} label="Read the guide" variant="line" />
+                    <Btn href={withBase(`/insight/${lead.slug}`)} label="Read the guide" variant="line" />
                   </div>
                 </div>
               </div>
@@ -96,7 +97,7 @@ export default function InsightsPage() {
                   <div role="list">
                     {ALSO_READ.map((p, i) => (
                       <div key={p.slug} role="listitem" data-reveal="2">
-                        <a className="read-row" href={`/insight/${p.slug}`}>
+                        <a className="read-row" href={withBase(`/insight/${p.slug}`)}>
                           <div className="read-number">{String(i + 1).padStart(2, "0")}</div>
                           <div className="read-copy">
                             <div className="read-title small">{p.title}</div>
@@ -113,7 +114,7 @@ export default function InsightsPage() {
                 <div className="ask-card" data-reveal="4">
                   <h3 className="card-heading is-white">Dealing with this now?</h3>
                   <p className="ask-text">A senior attorney can review your situation free, with no obligation.</p>
-                  <Btn href="/contact" label="Free case review" />
+                  <Btn href={withBase("/contact")} label="Free case review" />
                 </div>
               </div>
             </div>

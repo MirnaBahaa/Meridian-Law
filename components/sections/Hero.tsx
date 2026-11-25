@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import { Fragment } from "react";
 import Btn from "../Btn";
 import { StatIcon } from "../Icons";
@@ -24,8 +25,8 @@ export default function Hero() {
             Experienced attorneys delivering practical, results-driven legal counsel for individuals, families and businesses.
           </p>
           <div className="hero-actions" data-load="media">
-            <Btn href="/contact" label="Free consultation" />
-            <Btn href="/practice-areas" label="Our practice areas" variant="outline" />
+            <Btn href={withBase("/contact")} label="Free consultation" />
+            <Btn href={withBase("/practice-areas")} label="Our practice areas" variant="outline" />
           </div>
         </div>
       </div>

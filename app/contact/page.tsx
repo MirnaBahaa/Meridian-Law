@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import { ArrowUpRight } from "@/components/Icons";
 import EnquiryForm from "@/components/pages/company/EnquiryForm";
@@ -20,7 +21,7 @@ export default function ContactPage() {
             <div className="hero-content">
               <div className="breadcrumb">
                 <div className="dot" />
-                <a href="/" className="breadcrumb-link">Home</a>
+                <a href={withBase("/")} className="breadcrumb-link">Home</a>
                 <div className="breadcrumb-link">/</div>
                 <div>Contact</div>
               </div>
@@ -38,7 +39,7 @@ export default function ContactPage() {
             {REACH.map((r) => (
               <a
                 className={`reach-block ${r.tone}`}
-                href={r.href}
+                href={withBase(r.href)}
                 key={r.label}
                 id={r.id}
                 {...(r.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -116,7 +117,7 @@ export default function ContactPage() {
                           <p className={`regular-paragraph${w}`}>{o.address}</p>
                           <div className={`paragraph-small${w}`}>{o.hours}</div>
                         </div>
-                        <a href={o.map} className={`office-link${w}`} target="_blank" rel="noopener noreferrer">
+                        <a href={withBase(o.map)} className={`office-link${w}`} target="_blank" rel="noopener noreferrer">
                           Get directions
                           <ArrowUpRight className="inline-arrow is-after-text" />
                         </a>

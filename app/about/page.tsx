@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import type { Metadata } from "next";
 import Btn from "@/components/Btn";
 import Cta from "@/components/sections/Cta";
@@ -30,7 +31,7 @@ export default function AboutPage() {
             <div className="hero-content is-compact">
               <div className="breadcrumb">
                 <div className="dot" />
-                <a href="/" className="breadcrumb-link">Home</a>
+                <a href={withBase("/")} className="breadcrumb-link">Home</a>
                 <div className="breadcrumb-link">/</div>
                 <div>About</div>
               </div>
@@ -41,7 +42,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="hero-actions" data-load="media">
-                <Btn href="/contact" label="Book a consultation" />
+                <Btn href={withBase("/contact")} label="Book a consultation" />
               </div>
             </div>
           </div>
@@ -119,7 +120,7 @@ export default function AboutPage() {
                       <p className="founder-role">{f.role}</p>
                       <h3 className="founder-name">{f.name}</h3>
                     </div>
-                    <a href={f.href} className="founder-link" aria-label={`View ${f.name} profile`}>
+                    <a href={withBase(f.href)} className="founder-link" aria-label={`View ${f.name} profile`}>
                       <ArrowRight className="inline-arrow" />
                     </a>
                   </div>
@@ -173,7 +174,7 @@ export default function AboutPage() {
             <div className="section-intro" data-reveal="2">
               <p className="regular-paragraph">
                 Meet us in person in Manhattan, Brooklyn or Queens, or by secure video from anywhere in New York. Prefer video?
-                <a href="/contact" className="video-link">
+                <a href={withBase("/contact")} className="video-link">
                   Book a secure video consult
                   <ArrowRight className="inline-arrow is-after-text" />
                 </a>
@@ -187,7 +188,7 @@ export default function AboutPage() {
                 <div className="branch-panel">
                   <div className="branch-top">
                     <div className="branch-tag">{b.tag}</div>
-                    <a href={b.map} className="branch-arrow" aria-label={b.mapLabel} target="_blank" rel="noopener noreferrer">
+                    <a href={withBase(b.map)} className="branch-arrow" aria-label={b.mapLabel} target="_blank" rel="noopener noreferrer">
                       <ArrowUpRight className="inline-arrow" />
                     </a>
                   </div>
@@ -255,7 +256,7 @@ export default function AboutPage() {
                 Every Meridian Law attorney gives time back to the city that built the firm — in clinics, classrooms and courtrooms.
               </p>
               <div data-reveal="2">
-                <Btn href="/contact" label="Talk to our team" variant="line" />
+                <Btn href={withBase("/contact")} label="Talk to our team" variant="line" />
               </div>
             </div>
             <div className="giving-media">

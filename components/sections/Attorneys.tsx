@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/base";
 import Btn from "../Btn";
 import PopSlider from "../PopSlider";
 import CounselTrack, { CounselCard } from "../CounselTrack";
@@ -14,7 +15,7 @@ export default function Attorneys() {
             <div className="badge is-forest">Our attorneys</div>
             <h2 className="heading-text">The counsel behind every verdict.</h2>
           </div>
-          <Btn href="/attorneys" label="Meet the team" variant="line" reveal="2" />
+          <Btn href={withBase("/attorneys")} label="Meet the team" variant="line" reveal="2" />
         </div>
         <div className="counsel-stage is-home">
           <CounselTrack />
