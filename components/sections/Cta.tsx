@@ -19,9 +19,11 @@ export default function Cta() {
       <div className="container is-cta">
         <div className="cta-content">
           <h2 className="heading-text is-white">Not sure where to start?</h2>
-          <p className="regular-paragraph is-white is-large" data-reveal="2">
-            Tell us what happened. A senior attorney will point you in the right direction — free.
-          </p>
+          <div className="max-width-30">
+            <p className="regular-paragraph is-white is-large" data-reveal="2">
+              Tell us what happened. A senior attorney will point you in the right direction — free.
+            </p>
+          </div>
           <Btn href="/contact" label="Book a free consultation" reveal="4" />
         </div>
       </div>

@@ -1,0 +1,11 @@
+/* Attorney profile: page-scoped tweaks (shared site.css makes every .button-primary fit-content;
+   on the live profile the "All attorneys" button stretches across the related list). */
+.pg-attorney .related-layout > .button-primary {
+  width: auto;
+}
+
+/* site.css stretches hero buttons below 480px (homepage); the live inner-page heroes keep them fit-content. */
+@media screen and (max-width: 479px) {
+  .pg-att-hero .hero-actions { align-items: flex-start; }
+  .pg-att-hero .hero-actions .button-primary { width: fit-content; justify-content: center; }
+}

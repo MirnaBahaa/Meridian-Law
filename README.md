@@ -6,7 +6,7 @@
 
 <p align="center"><strong>Trusted counsel, proven results.</strong> A modern, animated law-firm website built with Next.js.</p>
 
-A responsive, single-page law-firm website built with Next.js, React and GSAP, with separate desktop, tablet and phone (375px) layouts and scroll animations that respect `prefers-reduced-motion`. Page content lives in `lib/data.ts`; the brand name and logo in `components/Logo.tsx`.
+A responsive, multi-page law-firm website built with Next.js, React and GSAP, with separate desktop, tablet and phone (375px) layouts and scroll animations that respect `prefers-reduced-motion`. Homepage content lives in `lib/data.ts` and inner-page content in `lib/content/`; the brand name and logo in `components/Logo.tsx`.
 
 > The project details below are real. The content on the site itself (attorneys, testimonials, case results, statistics, contact details) is sample content, and photos/video load from a remote CDN. Replace both before going live.
 
@@ -33,10 +33,10 @@ No environment variables are required.
 
 ## Structure
 
-- `app/`: layout, home page, favicon, and styles (`reference.css` tokens and components, `site.css` additions and phone layout)
-- `components/sections/`: one file per homepage section
+- `app/`: shared layout (navbar, footer, animations), home page, inner-page routes (`insights`, `insight/[slug]`, `attorneys`, `attorney/[slug]`, `case-results`, `case-study/[slug]`, …), favicon, and styles (`styles.css` full design system, `site.css` additions and phone layout)
+- `components/sections/`: one file per homepage section; `components/pages/`: inner-page components
 - `components/`: navbar, motion layer (`Motion.tsx`), sliders, testimonial wheel, FAQ, buttons, icons, logo
-- `lib/data.ts`: all page content and media URLs
+- `lib/data.ts`: homepage content; `lib/content/`: inner-page content (insights, attorneys, cases, …)
 
 ## Homepage Sections
 

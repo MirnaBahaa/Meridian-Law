@@ -1,0 +1,5 @@
+/* site.css stretches hero buttons below 480px (homepage); the live inner-page heroes keep them fit-content. */
+@media screen and (max-width: 479px) {
+  .pg-att-hero .hero-actions { align-items: flex-start; }
+  .pg-att-hero .hero-actions .button-primary { width: fit-content; justify-content: center; }
+}

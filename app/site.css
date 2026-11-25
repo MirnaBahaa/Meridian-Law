@@ -21,6 +21,13 @@ html.js:not(.ready) .reasons-center > .badge,
 html.js:not(.ready) .reason-card,
 html.js:not(.ready) .guide-rise,
 html.js:not(.ready) .orbit-wheel,
+html.js:not(.ready) .hero-content .breadcrumb,
+html.js:not(.ready) .hero-topics,
+html.js:not(.ready) .fact-band,
+html.js:not(.ready) .post-index .post-row,
+html.js:not(.ready) .post-related .post-feature,
+html.js:not(.ready) .benefit-grid .benefit-card,
+html.js:not(.ready) .issue-card .issue-row,
 html.js:not(.ready) .footer-band .footer-row,
 html.js:not(.ready) .footer-grid .footer-col,
 html.js:not(.ready) .footer-bottom .footer-row { opacity: 0; }
@@ -155,7 +162,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
   /* How we work */
   .step-card.is-stack { padding: .875rem; row-gap: 1rem; }
-  .card-heading { font-size: 1.375rem; }
+  .step-card .card-heading { font-size: 1.375rem; }
 
   /* Testimonial wheel */
   .orbit-content { padding: 1rem; row-gap: .625rem; }

@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Inter_Tight } from "next/font/google";
-import "./reference.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/sections/Footer";
+import Motion from "@/components/Motion";
+import "./styles.css";
 import "./site.css";
 
 const geist = Geist({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-geist", display: "swap" });
@@ -24,7 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: BOOT }} />
         <link rel="preconnect" href="https://cdn.prod.website-files.com" crossOrigin="" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <Motion />
+      </body>
     </html>
   );
 }

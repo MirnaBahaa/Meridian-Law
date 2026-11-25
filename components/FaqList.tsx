@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FAQS } from "@/lib/data";
 
-export default function FaqList() {
+/** Single-open FAQ accordion. Pass `items` to reuse it on other pages; defaults to the homepage FAQ. */
+export default function FaqList({ items = FAQS, idPrefix = "faq" }: { items?: { q: string; a: string }[]; idPrefix?: string }) {
   const [open, setOpen] = useState(0);
   const answers = useRef<(HTMLDivElement | null)[]>([]);
   const minus = useRef<(HTMLSpanElement | null)[]>([]);
@@ -23,7 +24,7 @@ export default function FaqList() {
 
   return (
     <div className="faq-list">
-      {FAQS.map((f, i) => {
+      {items.map((f, i) => {
         const on = i === open;
         const act = on ? " is-active" : "";
         return (
@@ -32,8 +33,8 @@ export default function FaqList() {
               type="button"
               className={`faq-question${act}`}
               aria-expanded={on}
-              aria-controls={`faq-a-${i}`}
-              id={`faq-q-${i}`}
+              aria-controls={`${idPrefix}-a-${i}`}
+              id={`${idPrefix}-q-${i}`}
               onClick={() => setOpen(i)}
             >
               <span>{f.q}</span>
@@ -52,9 +53,9 @@ export default function FaqList() {
               </span>
             </button>
             <div
-              id={`faq-a-${i}`}
+              id={`${idPrefix}-a-${i}`}
               role="region"
-              aria-labelledby={`faq-q-${i}`}
+              aria-labelledby={`${idPrefix}-q-${i}`}
               className={on ? "faq-answer is-open" : "faq-answer is-closed"}
               ref={(el) => { answers.current[i] = el; }}
             >

@@ -1,0 +1,2 @@
+/* Insights listing: undo the homepage-only mobile `.card-heading` size from site.css for the ask card. */
+.pg-insights .ask-card .card-heading { font-size: var(--_typography---font-size--card-title); }

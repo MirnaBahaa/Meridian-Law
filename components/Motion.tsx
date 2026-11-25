@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -107,13 +108,28 @@ function initCounters() {
 function heroLoad() {
   const heading = document.querySelector<HTMLElement>(".hero-heading");
   const tl = gsap.timeline();
-  tl.from('[data-load="badge"]', { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" }, 0);
+  const badge = q('[data-load="badge"], .hero-content .breadcrumb');
+  if (badge.length) tl.from(badge, { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" }, 0);
   if (heading) {
     const split = SplitText.create(heading, { type: "words,chars" });
     tl.from(split.chars, { opacity: 0, yPercent: 50, duration: 0.7, stagger: { amount: 0.5 }, ease: "power2.out" }, 0.2);
   }
-  tl.from('[data-load="text"]', { opacity: 0, y: 50, duration: 0.6, ease: "power2.out" }, 0.8)
-    .from('[data-load="media"]', { opacity: 0, y: 80, duration: 0.6, ease: "power2.out" }, 0.99);
+  const text = q('[data-load="text"]');
+  const media = q('[data-load="media"]');
+  if (text.length) tl.from(text, { opacity: 0, y: 50, duration: 0.6, ease: "power2.out" }, 0.8);
+  if (media.length) tl.from(media, { opacity: 0, y: 80, duration: 0.6, ease: "power2.out" }, 0.99);
+
+  // Inner-page hero extras: topic links (Insights) and the fact band + snapshot items (detail pages).
+  const topics = q(".hero-topics");
+  if (topics.length) {
+    tl.from(topics, { opacity: 0, y: 30, duration: 0.8, ease: "power2.out" }, 0.9)
+      .from(q(".hero-topic"), { opacity: 0, y: 40, duration: 0.6, stagger: 0.08, ease: "power2.out" }, 1);
+  }
+  const band = q(".fact-band");
+  if (band.length) {
+    tl.from(band, { opacity: 0, yPercent: 100, duration: 0.8, ease: "power2.out" }, 0.9)
+      .from(q(".snapshot-item"), { opacity: 0, y: 40, duration: 0.7, stagger: 0.1, ease: "power2.out" }, 1.2);
+  }
 }
 
 /* ---------------- 3.3 Scroll reveals ---------------- */
@@ -142,6 +158,21 @@ function reveals() {
 
   q(".guide-rise").forEach((el) =>
     gsap.from(el, { opacity: 0, y: 120, duration: 0.8, ease: "power3.out", scrollTrigger: once(el, "top 85%") })
+  );
+
+  // Inner pages: groups whose children rise in with a stagger when the group scrolls into view.
+  const groups: [string, string, number, number, string, number][] = [
+    // container, children, y, stagger, start, delay
+    [".post-index", ".post-row", 80, 0.2, "top 90%", 0],
+    [".post-related", ".post-feature", 80, 0.2, "top 90%", 0],
+    [".benefit-grid", ".benefit-card", 80, 0.2, "top 90%", 0],
+    [".issue-card", ".issue-row", 40, 0.15, "top 85%", 0.5],
+  ];
+  groups.forEach(([parent, child, y, stagger, start, delay]) =>
+    q(parent).forEach((p) => {
+      const kids = q(child, p);
+      if (kids.length) gsap.from(kids, { opacity: 0, y, duration: 0.7, delay, stagger, ease: "power2.out", scrollTrigger: once(p, start) });
+    })
   );
 
   q(".footer-band .footer-row").forEach((el) => gsap.from(el, { opacity: 0, y: 40, duration: 0.7, ease: "power2.out", scrollTrigger: once(el) }));
@@ -192,10 +223,50 @@ function hovers(cleanups: (() => void)[]) {
     if (img) bind(card, gsap.timeline({ paused: true }).to(img, { scale: 1.1, duration: 0.4, ease: "power2.out" }));
   });
 
-  q(".guide-card").forEach((card) => {
-    const img = card.querySelector(".guide-shot");
-    if (img) bind(card, gsap.timeline({ paused: true }).to(img, { scale: 1.06, duration: 0.45, ease: "power2.inOut" }));
+  // Card image zooms (guides, practice cards, results, posts).
+  q(".guide-card, .practice-card, .result-card, .post-row, .post-card, .post-feature").forEach((card) => {
+    const tl = gsap.timeline({ paused: true });
+    const zoom = q(".guide-shot, .card-image, .result-photo, .post-row-photo, .post-photo", card);
+    if (zoom.length) tl.to(zoom, { scale: 1.06, duration: 0.45, ease: "power2.inOut" }, 0);
+    const lift = q(".post-feature-photo", card);
+    if (lift.length) tl.to(lift, { opacity: 0.9, yPercent: -2, duration: 0.45, ease: "power2.inOut" }, 0);
+    if (tl.getChildren().length) bind(card, tl);
   });
+
+  q(".attorney-card").forEach((card) => {
+    const img = q(".attorney-photo", card);
+    if (img.length) bind(card, gsap.timeline({ paused: true }).to(img, { scale: 1.06, duration: 0.6, ease: "power3.out" }));
+  });
+
+  q(".case-row").forEach((row) => {
+    const img = q(".releted-case-photo", row);
+    if (img.length) bind(row, gsap.timeline({ paused: true }).to(img, { scale: 1.08, duration: 0.4, ease: "power2.out" }));
+  });
+
+  // Team cards: the hovered card opens its "more" panel, zooms and un-greys its photo; others reset.
+  const team = q(".team-card");
+  team.forEach((card) => {
+    const enter = () => {
+      q(".team-more.more-open").forEach((el) => el.classList.remove("more-open"));
+      q(".team-photo.photo-zoom").forEach((el) => el.classList.remove("photo-zoom"));
+      q(".team-photo.is-mono.mono-off").forEach((el) => el.classList.remove("mono-off"));
+      q(".team-more", card).forEach((el) => el.classList.add("more-open"));
+      q(".team-photo", card).forEach((el) => el.classList.add("photo-zoom"));
+      q(".team-photo.is-mono", card).forEach((el) => el.classList.add("mono-off"));
+    };
+    card.addEventListener("mouseenter", enter);
+    cleanups.push(() => card.removeEventListener("mouseenter", enter));
+  });
+}
+
+/* ---------------- Office cards: shrink as the next one stacks over them ---------------- */
+function officeCards() {
+  q(".office-card").forEach((card) =>
+    gsap.fromTo(card, { scale: 1 }, {
+      scale: 0.9, transformOrigin: "50% 0%", ease: "none",
+      scrollTrigger: { trigger: card, start: "top 104px", end: "bottom 104px", scrub: 0.5 },
+    })
+  );
 }
 
 /* ---------------- Marquees ---------------- */
@@ -223,9 +294,11 @@ function desktop(reduce: boolean) {
 
   // Practice areas: pinned (CSS sticky) horizontal track.
   const pin = document.querySelector(".practice-pin");
-  if (pin) {
+  if (pin && pin.querySelector(".practice-track")) {
     gsap.to(".practice-track", { xPercent: -74, ease: "none", scrollTrigger: { trigger: pin, start: "top top", end: "bottom bottom", scrub: 1.2 } });
   }
+
+  if (!reduce) officeCards();
 
   // How we work: each card shrinks as the next one slides over it.
   if (!reduce) {
@@ -275,6 +348,7 @@ function tablet() {
 }
 
 export default function Motion() {
+  const pathname = usePathname();
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const html = document.documentElement;
@@ -335,7 +409,7 @@ export default function Motion() {
       mm?.revert();
       ctx?.revert();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
